@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import AddCategory from './components/AddCategory';
+import GifList from './components/GifList';
+const App = () => {
+	const [categories, setCategories] = useState(['Jojo adventure']);
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+	// const handleAdd = () => {
+	// 	const serie = 'Inuyasha';
+	// 	setcategories([...categories, serie]);
+	// };
+	return (
+		<>
+			<h2>GifExpertApp</h2>
+			<hr />
+			<AddCategory setCategories={setCategories} />
+			<ul>
+				{categories.map((category) => {
+					return <GifList key={category} category={category} />;
+				})}
+			</ul>
+		</>
+	);
+};
 
 export default App;
